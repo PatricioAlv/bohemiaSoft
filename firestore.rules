@@ -1,0 +1,66 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Reglas para Usuarios (Propietarios)
+    match /usuarios/{userId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+    }
+    
+    // Reglas para Productos
+    match /productos/{productId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+    }
+    
+    // Reglas para Clientes
+    match /clientes/{clientId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+    }
+    
+    // Reglas para Ventas
+    match /ventas/{ventaId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+      
+      // Subcollección de detalles
+      match /detalles/{detailId} {
+        allow read: if true;
+        allow write: if true;
+      }
+      
+      // Subcollección de propietarios
+      match /propietarios/{propietarioId} {
+        allow read: if true;
+        allow write: if true;
+      }
+    }
+    
+    // Reglas para Medios de Pago
+    match /medios_pago/{medioPagoId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+    }
+    
+    // Reglas para Pagos
+    match /pagos/{pagoId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+      
+      // Subcollección de imputaciones
+      match /imputaciones/{imputacionId} {
+        allow read: if true;
+        allow write: if true;
+      }
+    }
+    
+    // Reglas para Liquidaciones
+    match /liquidaciones/{liquidacionId} {
+      allow read: if true;
+      allow write: if true; // En producción, restringir según autenticación
+    }
+  }
+}

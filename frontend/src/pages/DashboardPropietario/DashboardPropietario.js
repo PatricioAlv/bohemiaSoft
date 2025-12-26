@@ -12,7 +12,10 @@ function DashboardPropietario() {
   const [periodo, setPeriodo] = useState('mes');
 
   const cargarDatos = async () => {
-    if (!propietarioId) return;
+    if (!propietarioId) {
+      setLoading(false);
+      return;
+    }
 
     try {
       setLoading(true);

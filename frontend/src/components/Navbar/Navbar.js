@@ -15,6 +15,7 @@ function Navbar() {
         <li><Link to="/productos">Productos</Link></li>
         <li><Link to="/clientes">Clientes</Link></li>
         <li><Link to="/propietarios">Propietarios</Link></li>
+        <li><Link to="/configuracion">⚙️ Configuración</Link></li>
       </ul>
     </nav>
   );

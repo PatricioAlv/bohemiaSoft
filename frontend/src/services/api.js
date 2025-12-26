@@ -13,10 +13,20 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const message = error.response?.data?.error || 'Error en la solicitud';
+    const message = error.response?.data?.error || error.response?.data?.message || 'Error en la solicitud';
     console.error('API Error:', message);
     return Promise.reject(error);
   }
 );
+
+// Agregar endpoints comunes
+export const usuariosAPI = {
+  listar: () => api.get('/usuarios'),
+  propietarios: () => api.get('/usuarios/propietarios'),
+};
+
+export const mediosPagoAPI = {
+  listar: () => api.get('/medios-pago'),
+};
 
 export default api;

@@ -4,14 +4,16 @@
   "description": "Firebase Cloud Functions para sistema de gestión comercial multi-propietario",
   "main": "src/index.js",
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "scripts": {
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "seed": "node scripts/seed.js",
+    "clean": "node scripts/clean.js"
   },
   "keywords": ["gestion", "comercial", "ventas", "multi-propietario", "firebase"],
   "author": "",

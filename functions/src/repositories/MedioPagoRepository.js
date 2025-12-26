@@ -51,6 +51,24 @@ class MedioPagoRepository extends BaseRepository {
   }
 
   /**
+   * Buscar medios de pago activos
+   */
+  async findActivos() {
+    try {
+      const snapshot = await this.collection
+        .where('activo', '==', true)
+        .get();
+
+      return snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } catch (error) {
+      throw new Error(`Error al buscar activos: ${error.message}`);
+    }
+  }
+
+  /**
    * Buscar tarjetas con comisión
    */
   async findConComision() {

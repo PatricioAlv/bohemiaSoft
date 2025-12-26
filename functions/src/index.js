@@ -24,6 +24,8 @@ app.use('/api/clientes', require('./routes/clienteRoutes'));
 app.use('/api/ventas', require('./routes/ventaRoutes'));
 app.use('/api/pagos', require('./routes/pagoRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
+app.use('/api/usuarios', require('./routes/usuarioRoutes'));
+app.use('/api/medios-pago', require('./routes/medioPagoRoutes'));
 
 // Ruta de health check
 app.get('/health', (req, res) => {
@@ -44,6 +46,8 @@ app.get('/', (req, res) => {
       ventas: '/api/ventas',
       pagos: '/api/pagos',
       dashboard: '/api/dashboard',
+      usuarios: '/api/usuarios',
+      mediosPago: '/api/medios-pago',
     },
   });
 });
