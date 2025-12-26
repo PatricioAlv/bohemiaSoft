@@ -41,7 +41,18 @@ const obtenerVenta = asyncHandler(async (req, res) => {
  * GET /api/ventas?fechaInicio=2024-01-01&fechaFin=2024-01-31
  */
 const obtenerVentas = asyncHandler(async (req, res) => {
-  const { fechaInicio, fechaFin } = req.query;
+  const { fechaInicio, fechaFin, estado, cliente_id } = req.query;
+  
+  // Si no hay filtros, obtener todas las ventas
+  if (!fechaInicio && !fechaFin && !estado && !cliente_id) {
+    const VentaRepository = require('../repositories/VentaRepository');
+    const ventaRepo = new VentaRepository();
+    const ventas = await ventaRepo.findAll();
+    return res.json({
+      success: true,
+      data: ventas,
+    });
+  }
   
   const inicio = fechaInicio ? new Date(fechaInicio) : new Date();
   const fin = fechaFin ? new Date(fechaFin) : new Date();

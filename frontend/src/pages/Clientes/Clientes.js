@@ -16,10 +16,13 @@ function Clientes() {
   const cargarClientes = async () => {
     try {
       setLoading(true);
+      console.log('Cargando clientes...');
       const data = await clienteService.getAll();
+      console.log('Clientes cargados:', data);
       setClientes(data);
     } catch (error) {
       console.error('Error al cargar clientes:', error);
+      console.error('Error details:', error.response?.data);
     } finally {
       setLoading(false);
     }

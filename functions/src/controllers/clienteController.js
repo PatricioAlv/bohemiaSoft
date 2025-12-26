@@ -28,7 +28,8 @@ const obtenerClientes = asyncHandler(async (req, res) => {
   if (conSaldo === 'true') {
     clientes = await clienteRepo.findConSaldo();
   } else {
-    clientes = await clienteRepo.findAll({ activo: true });
+    // Cambiar para obtener todos los clientes, no solo activos
+    clientes = await clienteRepo.findAll();
   }
   
   res.json({

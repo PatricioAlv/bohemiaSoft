@@ -17,6 +17,21 @@ const registrarPago = asyncHandler(async (req, res) => {
 });
 
 /**
+ * Obtener todos los pagos
+ * GET /api/pagos
+ */
+const obtenerPagos = asyncHandler(async (req, res) => {
+  const PagoRepository = require('../repositories/PagoRepository');
+  const pagoRepo = new PagoRepository();
+  const pagos = await pagoRepo.findAll();
+  
+  res.json({
+    success: true,
+    data: pagos,
+  });
+});
+
+/**
  * Obtener historial de pagos de un cliente
  * GET /api/pagos/cliente/:clienteId
  */
@@ -52,6 +67,7 @@ const obtenerResumenPropietario = asyncHandler(async (req, res) => {
 
 module.exports = {
   registrarPago,
+  obtenerPagos,
   obtenerPagosCliente,
   obtenerResumenPropietario,
 };

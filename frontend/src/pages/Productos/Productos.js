@@ -16,10 +16,13 @@ function Productos() {
   const cargarProductos = async () => {
     try {
       setLoading(true);
+      console.log('Cargando productos...');
       const data = await productoService.getAll();
+      console.log('Productos cargados:', data);
       setProductos(data);
     } catch (error) {
       console.error('Error al cargar productos:', error);
+      console.error('Error details:', error.response?.data);
     } finally {
       setLoading(false);
     }

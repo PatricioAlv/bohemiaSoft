@@ -19,13 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // Rutas
-app.use('/api/productos', require('./routes/productoRoutes'));
-app.use('/api/clientes', require('./routes/clienteRoutes'));
-app.use('/api/ventas', require('./routes/ventaRoutes'));
-app.use('/api/pagos', require('./routes/pagoRoutes'));
-app.use('/api/dashboard', require('./routes/dashboardRoutes'));
-app.use('/api/usuarios', require('./routes/usuarioRoutes'));
-app.use('/api/medios-pago', require('./routes/medioPagoRoutes'));
+app.use('/productos', require('./routes/productoRoutes'));
+app.use('/clientes', require('./routes/clienteRoutes'));
+app.use('/ventas', require('./routes/ventaRoutes'));
+app.use('/pagos', require('./routes/pagoRoutes'));
+app.use('/dashboard', require('./routes/dashboardRoutes'));
+app.use('/usuarios', require('./routes/usuarioRoutes'));
+app.use('/medios-pago', require('./routes/medioPagoRoutes'));
 
 // Ruta de health check
 app.get('/health', (req, res) => {
@@ -41,13 +41,13 @@ app.get('/', (req, res) => {
     message: 'BohemiaSoft API - Sistema de Gestión Comercial',
     version: '1.0.0',
     endpoints: {
-      productos: '/api/productos',
-      clientes: '/api/clientes',
-      ventas: '/api/ventas',
-      pagos: '/api/pagos',
-      dashboard: '/api/dashboard',
-      usuarios: '/api/usuarios',
-      mediosPago: '/api/medios-pago',
+      productos: '/productos',
+      clientes: '/clientes',
+      ventas: '/ventas',
+      pagos: '/pagos',
+      dashboard: '/dashboard',
+      usuarios: '/usuarios',
+      mediosPago: '/medios-pago',
     },
   });
 });

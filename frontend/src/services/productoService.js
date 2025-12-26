@@ -4,19 +4,24 @@ export const productoService = {
   // Obtener todos los productos
   getAll: async (params = {}) => {
     const response = await api.get('/productos', { params });
-    return response.data.data;
+    console.log('Response productos:', response.data);
+    console.log('response.data.data:', response.data.data);
+    console.log('response.data:', response.data);
+    const result = response.data.data || response.data || [];
+    console.log('Result final:', result);
+    return result;
   },
 
   // Obtener un producto
   getById: async (id) => {
     const response = await api.get(`/productos/${id}`);
-    return response.data.data;
+    return response.data.data || response.data;
   },
 
   // Crear producto
   create: async (producto) => {
     const response = await api.post('/productos', producto);
-    return response.data.data;
+    return response.data.data || response.data;
   },
 
   // Actualizar producto

@@ -4,19 +4,20 @@ export const clienteService = {
   // Obtener todos los clientes
   getAll: async (params = {}) => {
     const response = await api.get('/clientes', { params });
-    return response.data.data;
+    console.log('Response clientes:', response.data);
+    return response.data.data || response.data || [];
   },
 
   // Obtener un cliente
   getById: async (id) => {
     const response = await api.get(`/clientes/${id}`);
-    return response.data.data;
+    return response.data.data || response.data;
   },
 
   // Crear cliente
   create: async (cliente) => {
     const response = await api.post('/clientes', cliente);
-    return response.data.data;
+    return response.data.data || response.data;
   },
 
   // Actualizar cliente

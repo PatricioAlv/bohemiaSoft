@@ -32,7 +32,8 @@ const obtenerProductos = asyncHandler(async (req, res) => {
   } else if (propietario_id) {
     productos = await productoService.obtenerPorPropietario(propietario_id);
   } else {
-    productos = await productoService.obtenerActivos();
+    // Cambiar para obtener todos los productos, no solo activos
+    productos = await productoRepo.findAll();
   }
   
   res.json({
